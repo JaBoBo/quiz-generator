@@ -7,12 +7,18 @@ from os import system,name # used to clear screen in windows or linux
 from random import randint # to randomize questions & answers
 
 
-def read_test_file(filename,num_answers): # reads in all questions/answers
+def read_test_file(filename): # reads in all questions/answers
 					  # returns list of q/a's & total # of questions
-# Change to read from database into list (can determine #As from list format
-	numitems = 0 ; testinput = []
+	numitems = 0 ; testinput = [] ; firstline = True
 	with open(filename) as f:
 		while True:
+			if firstline:
+				firstline = False
+				try:
+					num_answers = int(f.readline())
+				except:
+					print "UH OH, FIRST LINE SHOULD BE # OF ANSWERS PER QUESTION"
+					exit(0)
 			wronglist = [] ; bad_num_wrongs = False
 			question_in=f.readline() ; right_answer=f.readline()
 			if not right_answer or not question_in: break
@@ -38,7 +44,6 @@ def pick_n_shuffle_qs(original_list,num_qs): # shuffles all questions
 	newlist = [] # format: [ [<question>,answernum, [ans1,ans2,ans3,ans4],[q2,...] ]
 	covered_items = []
 	for i in range(num_qs):
-		print i
 #	for i in range(len(original_list)):
 		next_question = one_rand(len(original_list))
 		newlist.append(original_list[next_question])
@@ -86,8 +91,8 @@ def make_test_key_file(complete_test_list,outfilename):
 		f.write("\n")
 	f.close()
 
-def process_test_file(fname,fnameout,num_answrs,num_qs):
-	test_list, num_questions =  read_test_file(fname,num_answrs)
+def process_test_file(fname,fnameout,num_qs):
+	test_list, num_questions =  read_test_file(fname)
 	new_test_list = pick_n_shuffle_qs(test_list,num_qs) # remember to include new entry for correct answer
 	finished_test_list = shuffle_answers(new_test_list)
 	display_test_key(finished_test_list)
@@ -95,12 +100,11 @@ def process_test_file(fname,fnameout,num_answrs,num_qs):
 
 
 #### MAIN ####
-filein='QUIZ.DAT.NONUMAS'
-fileout='generated_tests/version2quiz.txt'
-num_as=4
-num_qs=12
+filein='QUIZ.DAT.WITHNUMAS'
+fileout='generated_tests/version3quiz.txt'
+num_qs=12 # desired number of questions
 #main_menu(filein,fileout,num_as,num_qs,'')
-process_test_file(filein,fileout,num_as,num_qs)
+process_test_file(filein,fileout,num_qs)
 
 
 
