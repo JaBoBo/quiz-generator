@@ -6,7 +6,6 @@
 from os import system,name # used to clear screen in windows or linux
 from random import randint # to randomize questions & answers
 
-
 def read_test_file(filename): # reads in all questions/answers
 					  # returns list of q/a's & total # of questions
 	numitems = 0 ; testinput = [] ; firstline = True
@@ -73,38 +72,46 @@ def shuffle_answers(finlist): # takes in shuffled q's
 	return full_test
 
 def display_test_key(complete_test_list):
+	qnum = 0
 	for eachitem in complete_test_list:
-		print "Question: " + eachitem[0]
+		qnum += 1
+		print str(qnum) + ")  " + eachitem[0]
 		for eachanswer in eachitem[2]:
-			print chr(65 + eachitem[2].index(eachanswer)) + ") " + eachanswer
+			print "       " + chr(65 + eachitem[2].index(eachanswer)) + ") " + eachanswer
 		print "Correct Answer: " + chr(65 + eachitem[1]) + ") " + eachitem[2][eachitem[1]]
 		print
 
 def display_test(complete_test_list):
+	qnum = 0
 	for eachitem in complete_test_list:
-		print "Question: " + eachitem[0]
+		qnum += 1
+		print str(qnum) + ")  " + eachitem[0]
 		for eachanswer in eachitem[2]:
-			print chr(65 + eachitem[2].index(eachanswer)) + ") " + eachanswer
+			print "       " + chr(65 + eachitem[2].index(eachanswer)) + ") " + eachanswer
 		print
 
 def make_test_key_file(complete_test_list,outfilename):
+	qnum = 0
 	outfilename += '.key'
 	f = open(outfilename,'w') # open/create new file
 	for eachitem in complete_test_list:
-		f.write("Question: " + eachitem[0] + "\n")
+		qnum += 1
+		f.write(str(qnum) + ")  " + eachitem[0] + "\n")
 		for eachanswer in eachitem[2]:
-			f.write(chr(65 + eachitem[2].index(eachanswer)) + ") " + eachanswer + "\n")
+			f.write("       " + chr(65 + eachitem[2].index(eachanswer)) + ") " + eachanswer + "\n")
 		f.write("Correct Answer: " + chr(65 + eachitem[1]) + ") " + eachitem[2][eachitem[1]] + "\n")
 		f.write("\n")
 	f.close()
 
 def make_test_file(complete_test_list,outfilename):
+	qnum = 0
 	outfilename += '.test'
 	f = open(outfilename,'w') # open/create new file
 	for eachitem in complete_test_list:
-		f.write("Question: " + eachitem[0] + "\n")
+		qnum += 1
+		f.write(str(qnum) + ")  " + eachitem[0] + "\n")
 		for eachanswer in eachitem[2]:
-			f.write(chr(65 + eachitem[2].index(eachanswer)) + ") " + eachanswer + "\n")
+			f.write("       " + chr(65 + eachitem[2].index(eachanswer)) + ") " + eachanswer + "\n")
 		f.write("\n")
 	f.close()
 
@@ -120,7 +127,7 @@ def process_test_file(fname,fnameout,num_qs):
 
 #### MAIN ####
 filein='QUIZ.DAT.WITHNUMAS'
-fileout='generated_tests/version4quiz.txt'
+fileout='generated_tests/version5quiz.txt'
 num_qs=12 # desired number of questions
 #main_menu(filein,fileout,num_as,num_qs,'')
 process_test_file(filein,fileout,num_qs)
