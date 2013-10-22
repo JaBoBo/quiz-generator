@@ -6,8 +6,6 @@
 from os import system,name # used to clear screen in windows or linux
 from random import randint # to randomize questions & answers
 
-def clearscreen():
-	system('cls' if name == 'nt' else 'clear')
 
 def read_test_file(filename,num_answers): # reads in all questions/answers
 					  # returns list of q/a's & total # of questions
@@ -70,7 +68,7 @@ def shuffle_answers(finlist): # takes in shuffled q's
 		full_test.append([eachq[0],right_answer,shuffled])
 	return full_test
 
-def display_test(complete_test_list):
+def display_test_key(complete_test_list):
 	for eachitem in complete_test_list:
 		print "Question: " + eachitem[0]
 		for eachanswer in eachitem[2]:
@@ -78,7 +76,7 @@ def display_test(complete_test_list):
 		print "Correct Answer: " + chr(65 + eachitem[1]) + ") " + eachitem[2][eachitem[1]]
 		print
 
-def make_test_file(complete_test_list,outfilename):
+def make_test_key_file(complete_test_list,outfilename):
 	f = open(outfilename,'w') # open/create new file
 	for eachitem in complete_test_list:
 		f.write("Question: " + eachitem[0] + "\n")
@@ -92,12 +90,28 @@ def process_test_file(fname,fnameout,num_answrs,num_qs):
 	test_list, num_questions =  read_test_file(fname,num_answrs)
 	new_test_list = pick_n_shuffle_qs(test_list,num_qs) # remember to include new entry for correct answer
 	finished_test_list = shuffle_answers(new_test_list)
-	display_test(finished_test_list)
-	make_test_file(finished_test_list,fnameout)
+	display_test_key(finished_test_list)
+	make_test_key_file(finished_test_list,fnameout)
 
+
+#### MAIN ####
+filein='QUIZ.DAT.NONUMAS'
+fileout='generated_tests/version2quiz.txt'
+num_as=4
+num_qs=12
+#main_menu(filein,fileout,num_as,num_qs,'')
+process_test_file(filein,fileout,num_as,num_qs)
+
+
+
+####################################### FUTURE STUFF BELOW MOVED TO GET OUT OF THE WAY
+#######################################
+#######################################
+#######################################
+def clearscreen():
+	system('cls' if name == 'nt' else 'clear')
 def show_help():
 	print "Insert Help Info Here"
-
 def main_menu(intest,outtest,answernum,numgen,err_msg):
 	clearscreen()
 	h='#'*80
@@ -181,11 +195,3 @@ def main_menu(intest,outtest,answernum,numgen,err_msg):
 	else:
 		main_menu(intest,outtest,answernum,numgen,"Improper Selection!!!!! Try Again.")
 	main_menu(intest,outtest,answernum,numgen,err_msg)
-
-#### MAIN ####
-filein='QUIZ.DAT.NONUMAS'
-fileout='generated_tests/version1quiz.txt'
-num_as=4
-num_qs=12
-#main_menu(filein,fileout,num_as,num_qs,'')
-process_test_file(filein,fileout,num_as,num_qs)

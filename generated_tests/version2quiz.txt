@@ -1,0 +1,84 @@
+Question: Which is the longest river on earth ?
+A) Rhein
+B) Amazon
+C) Mississippi
+D) Nile
+Correct Answer: D) Nile
+
+Question: Which sport uses the term LOVE ?
+A) Football
+B) Golf
+C) Swimming
+D) Tennis
+Correct Answer: D) Tennis
+
+Question: What is the capitol of Brazil ?
+A) Brasilia
+B) Sao Paulo
+C) Recife
+D) Rio de Janeiro
+Correct Answer: A) Brasilia
+
+Question: The chemical symbol Au stands for ?
+A) Water
+B) Aluminum
+C) Gold
+D) Alge
+Correct Answer: C) Gold
+
+Question: What is the currency of Spain ?
+A) Escudo
+B) Euro
+C) Dollaro
+D) Rubel
+Correct Answer: B) Euro
+
+Question: A foot has a length of ?
+A) 16 inches
+B) 2.2 meter
+C) 12 inches
+D) 5.3 centimeter
+Correct Answer: C) 12 inches
+
+Question: What has eight bits ?
+A) ASCII
+B) Byte
+C) RAM
+D) Word
+Correct Answer: B) Byte
+
+Question: The symbol in the swiss flag is a ....
+A) Cross
+B) Star
+C) Circle
+D) Mountain
+Correct Answer: A) Cross
+
+Question: Which is the highest mauntain in the USA ?
+A) Mount McKinley
+B) Mount St. Helens
+C) Mount Whitney
+D) Mount Baldy
+Correct Answer: A) Mount McKinley
+
+Question: The German flag has the colors red, gold and ....
+A) Brown
+B) Black
+C) Blue
+D) Green
+Correct Answer: B) Black
+
+Question: What is the German word for WATER ?
+A) Waski
+B) Wasser
+C) Wodar
+D) Werkip
+Correct Answer: B) Wasser
+
+Question: What is the capitol of Portugal ?
+A) Madrid
+B) Krak
+C) Lisbon
+D) Frankfurto
+Correct Answer: C) Lisbon
+
