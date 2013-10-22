@@ -44,7 +44,6 @@ def pick_n_shuffle_qs(original_list,num_qs): # shuffles all questions
 	newlist = [] # format: [ [<question>,answernum, [ans1,ans2,ans3,ans4],[q2,...] ]
 	covered_items = []
 	for i in range(num_qs):
-#	for i in range(len(original_list)):
 		next_question = one_rand(len(original_list))
 		newlist.append(original_list[next_question])
 		covered_items.append(next_question)
@@ -81,7 +80,15 @@ def display_test_key(complete_test_list):
 		print "Correct Answer: " + chr(65 + eachitem[1]) + ") " + eachitem[2][eachitem[1]]
 		print
 
+def display_test(complete_test_list):
+	for eachitem in complete_test_list:
+		print "Question: " + eachitem[0]
+		for eachanswer in eachitem[2]:
+			print chr(65 + eachitem[2].index(eachanswer)) + ") " + eachanswer
+		print
+
 def make_test_key_file(complete_test_list,outfilename):
+	outfilename += '.key'
 	f = open(outfilename,'w') # open/create new file
 	for eachitem in complete_test_list:
 		f.write("Question: " + eachitem[0] + "\n")
@@ -91,17 +98,29 @@ def make_test_key_file(complete_test_list,outfilename):
 		f.write("\n")
 	f.close()
 
+def make_test_file(complete_test_list,outfilename):
+	outfilename += '.test'
+	f = open(outfilename,'w') # open/create new file
+	for eachitem in complete_test_list:
+		f.write("Question: " + eachitem[0] + "\n")
+		for eachanswer in eachitem[2]:
+			f.write(chr(65 + eachitem[2].index(eachanswer)) + ") " + eachanswer + "\n")
+		f.write("\n")
+	f.close()
+
 def process_test_file(fname,fnameout,num_qs):
 	test_list, num_questions =  read_test_file(fname)
 	new_test_list = pick_n_shuffle_qs(test_list,num_qs) # remember to include new entry for correct answer
 	finished_test_list = shuffle_answers(new_test_list)
 	display_test_key(finished_test_list)
+	display_test(finished_test_list)
 	make_test_key_file(finished_test_list,fnameout)
+	make_test_file(finished_test_list,fnameout)
 
 
 #### MAIN ####
 filein='QUIZ.DAT.WITHNUMAS'
-fileout='generated_tests/version3quiz.txt'
+fileout='generated_tests/version4quiz.txt'
 num_qs=12 # desired number of questions
 #main_menu(filein,fileout,num_as,num_qs,'')
 process_test_file(filein,fileout,num_qs)
